@@ -1,12 +1,10 @@
 import 'package:get/get.dart';
 
 import '../controllers/create_habit/create_habit_controller.dart';
-import '../controllers/navigation_controller.dart';
 
-class NavigationBinding extends Bindings {
+class CreateHabitBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => NavigationController());
     Get.lazyPut(() => CreateHabitController());
   }
 }

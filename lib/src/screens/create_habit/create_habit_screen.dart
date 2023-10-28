@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../widgets/card/habit_card.dart';
-import '../widgets/card/habit_small_card.dart';
-import '../widgets/session/explore_session.dart';
+import 'package:habit_tracker/src/controllers/create_habit/create_habit_controller.dart';
 
-class CreateHabitScreen extends GetView {
+import '../../widgets/card/habit_card.dart';
+import '../../widgets/card/habit_small_card.dart';
+import '../../widgets/session/explore_session.dart';
+
+class CreateHabitScreen extends GetView<CreateHabitController> {
   const CreateHabitScreen({super.key});
+  
 
   @override
   Widget build(BuildContext context) {
@@ -46,29 +49,42 @@ class CreateHabitScreen extends GetView {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
                   color: colorScheme.background,
-                  child: const Column(
+                  child: Column(
                     children: [
                       ExploreSession(
                         title: 'Suggested for You',
                         height: 151,
                         habitCards: [
-                          HabitSmallCard(),
-                          HabitSmallCard(),
-                          HabitSmallCard(),
-                          HabitSmallCard(),
+                          HabitSmallCard(
+                            onTap: () {
+                              Get.bottomSheet(
+                                BottomSheet(
+                                  onClosing: () {},
+                                  animationController: controller.controller,
+                                  showDragHandle: true,
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.vertical(
+                                      top: Radius.circular(25.0),
+                                    ),
+                                  ),
+                                  backgroundColor:
+                                      colorScheme.tertiaryContainer,
+                                  builder: (ctx) => Container(
+                                    height: 400,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                          HabitSmallCard(
+                            onTap: () {},
+                          ),
+                          HabitSmallCard(
+                            onTap: () {},
+                          ),
                         ],
                       ),
-                      ExploreSession(
-                        title: 'Habit Clubs',
-                        height: 151,
-                        habitCards: [
-                          HabitSmallCard(),
-                          HabitSmallCard(),
-                          HabitSmallCard(),
-                          HabitSmallCard(),
-                        ],
-                      ),
-                      ExploreSession(
+                      const ExploreSession(
                         title: 'Challenges',
                         height: 200,
                         habitCards: [
@@ -77,7 +93,7 @@ class CreateHabitScreen extends GetView {
                           HabitCard(),
                         ],
                       ),
-                      ExploreSession(
+                      const ExploreSession(
                         title: 'Learning',
                         height: 200,
                         habitCards: [

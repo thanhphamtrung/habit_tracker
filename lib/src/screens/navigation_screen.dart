@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 import '../controllers/navigation_controller.dart';
 
-import 'create_habit_screen.dart';
+import 'create_habit/create_habit_screen.dart';
 import 'home_screen.dart';
 import 'stat_screen.dart';
 
