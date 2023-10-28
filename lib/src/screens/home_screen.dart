@@ -4,14 +4,14 @@ import 'package:get/get.dart';
 
 import '../widgets/habit_card.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends GetView {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
-      color: Colors.amberAccent,
+      color: context.theme.colorScheme.background,
       child: SafeArea(
         child: Column(
           children: [
@@ -20,7 +20,8 @@ class HomeScreen extends StatelessWidget {
               children: [
                 Text(
                   'In Progress',
-                  style: context.textTheme.headlineLarge,
+                  style: context.textTheme.headlineLarge
+                      ?.copyWith(color: context.theme.colorScheme.onBackground),
                 ),
                 Container(
                   color: Colors.black26,
@@ -32,13 +33,9 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 64),
             const Column(
               children: [
-                HabitCard(),
-                SizedBox(height: 24),
-                HabitCard(),
-                SizedBox(height: 24),
-                HabitCard(),
-                SizedBox(height: 24),
-                HabitCard(),
+                HabitCard(
+                  title: 'Workout',
+                ),
                 SizedBox(height: 24),
               ],
             )

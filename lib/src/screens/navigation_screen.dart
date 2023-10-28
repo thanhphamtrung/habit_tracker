@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:get/get.dart';
 
-import 'package:habit_tracker/src/controllers/navigation_controller.dart';
-import 'package:habit_tracker/src/screens/create_habit_screen.dart';
-import 'package:habit_tracker/src/screens/home_screen.dart';
-import 'package:habit_tracker/src/screens/stat_screen.dart';
+import '../controllers/navigation_controller.dart';
+
+import 'create_habit_screen.dart';
+import 'home_screen.dart';
+import 'stat_screen.dart';
 
 class NavigationScreen extends GetView<NavigationController> {
   const NavigationScreen({super.key});
@@ -23,15 +24,24 @@ class NavigationScreen extends GetView<NavigationController> {
             ],
           ),
           bottomNavigationBar: CurvedNavigationBar(
-            items: const [
-              Icon(Icons.home),
-              Icon(Icons.add),
-              Icon(Icons.auto_graph),
+            items: [
+              Icon(
+                Icons.home,
+                size: context.theme.buttonBarTheme.buttonHeight,
+              ),
+              Icon(
+                Icons.add,
+                size: context.theme.buttonBarTheme.buttonHeight,
+              ),
+              Icon(
+                Icons.auto_graph,
+                size: context.theme.buttonBarTheme.buttonHeight,
+              ),
             ],
             onTap: controller.changeTabIndex,
-            backgroundColor: Colors.deepPurple,
-            color: Colors.deepPurple.shade200,
-            buttonBackgroundColor: Colors.white,
+            backgroundColor: context.theme.colorScheme.surface,
+            color: context.theme.colorScheme.onSurface,
+            buttonBackgroundColor: context.theme.colorScheme.primary,
           ),
         ));
   }
