@@ -47,3 +47,9 @@ app.*.map.json
 *.pbxproj
 *.xcworkspacedata
 *.cc
+ios/Flutter/Debug.xcconfig
+ios/Flutter/Release.xcconfig
+ios/Podfile
+ios/Podfile.lock
+ios/Runner.xcodeproj/project.pbxproj
+ios/Runner.xcworkspace/contents.xcworkspacedata
