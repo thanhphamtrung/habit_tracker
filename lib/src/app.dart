@@ -21,7 +21,9 @@ class App extends StatelessWidget {
             participatesInRootNavigator: true,
             name: '/',
             binding: NavigationBinding(),
-            page: () => const NavigationScreen()),
+            page: () => const NavigationScreen(
+              
+            )),
       ],
       debugShowCheckedModeBanner: false,
     );

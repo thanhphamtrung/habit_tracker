@@ -24,6 +24,7 @@ class NavigationScreen extends GetView<NavigationController> {
             ],
           ),
           bottomNavigationBar: CurvedNavigationBar(
+            index: controller.tabIndex.value,
             items: [
               Icon(
                 Icons.home,
@@ -40,7 +41,7 @@ class NavigationScreen extends GetView<NavigationController> {
             ],
             onTap: controller.changeTabIndex,
             backgroundColor: context.theme.colorScheme.surface,
-            color: context.theme.colorScheme.onSurface,
+            color: context.theme.colorScheme.surface,
             buttonBackgroundColor: context.theme.colorScheme.primary,
           ),
         ));

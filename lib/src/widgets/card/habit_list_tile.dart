@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-class HabitCard extends GetView {
+class HabitListTile extends GetView {
   final String title;
-  const HabitCard({
+  const HabitListTile({
     super.key,
     required this.title,
   });

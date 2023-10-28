@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../widgets/habit_card.dart';
+import '../widgets/card/habit_list_tile.dart';
 
 class HomeScreen extends GetView {
   const HomeScreen({super.key});
@@ -33,7 +33,7 @@ class HomeScreen extends GetView {
             const SizedBox(height: 64),
             const Column(
               children: [
-                HabitCard(
+                HabitListTile(
                   title: 'Workout',
                 ),
                 SizedBox(height: 24),
