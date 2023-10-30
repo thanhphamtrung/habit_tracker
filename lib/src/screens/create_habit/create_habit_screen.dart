@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import 'package:habit_tracker/src/controllers/create_habit/create_habit_controller.dart';
-
+import '../../controllers/create_habit/create_habit_controller.dart';
 import '../../widgets/card/habit_card.dart';
 import '../../widgets/card/habit_small_card.dart';
+import '../../widgets/common_widget/app_bottom_sheet.dart';
 import '../../widgets/session/explore_session.dart';
 
 class CreateHabitScreen extends GetView<CreateHabitController> {
   const CreateHabitScreen({super.key});
-  
 
   @override
   Widget build(BuildContext context) {
     var colorScheme = context.theme.colorScheme;
     var textTheme = context.textTheme;
+
     return Container(
         width: double.infinity,
         color: colorScheme.background.withAlpha(150),
@@ -58,20 +58,16 @@ class CreateHabitScreen extends GetView<CreateHabitController> {
                           HabitSmallCard(
                             onTap: () {
                               Get.bottomSheet(
-                                BottomSheet(
-                                  onClosing: () {},
-                                  animationController: controller.controller,
-                                  showDragHandle: true,
-                                  shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.vertical(
-                                      top: Radius.circular(25.0),
-                                    ),
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(20),
                                   ),
-                                  backgroundColor:
-                                      colorScheme.tertiaryContainer,
-                                  builder: (ctx) => Container(
-                                    height: 400,
-                                  ),
+                                ),
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                isScrollControlled: true,
+                                isDismissible: true,
+                                AppBottomSheet(
+                                  bottomSheetController: controller,
                                 ),
                               );
                             },

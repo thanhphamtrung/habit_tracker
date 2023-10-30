@@ -19,9 +19,11 @@ class HabitListTile extends GetView {
             Radius.circular(16.0),
           )),
       child: Center(
-        child: Text('Workout',
-            style: context.textTheme.titleLarge?.copyWith(
-                color: context.theme.colorScheme.onPrimaryContainer)),
+        child: Text(
+          title,
+          style: context.textTheme.titleLarge
+              ?.copyWith(color: context.theme.colorScheme.onPrimaryContainer),
+        ),
       ),
     );
   }

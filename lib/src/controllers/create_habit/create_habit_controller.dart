@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 class CreateHabitController extends GetxController
     with GetSingleTickerProviderStateMixin {
   late AnimationController controller;
+  var selectedDropdownValue = Rx<String>('Number');
   @override
   void onInit() {
     super.onInit();
@@ -14,5 +15,10 @@ class CreateHabitController extends GetxController
         milliseconds: 250,
       ),
     );
+  }
+
+  void onSelectDropDownValue(String? value) {
+    selectedDropdownValue.value = value ?? 'Number';
+    update();
   }
 }
