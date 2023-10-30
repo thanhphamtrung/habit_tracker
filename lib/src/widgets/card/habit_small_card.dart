@@ -4,14 +4,15 @@ import 'package:get/get.dart';
 
 class HabitSmallCard extends GetView {
   final VoidCallback onTap;
+  final String title;
   const HabitSmallCard({
     super.key,
     required this.onTap,
+    required this.title,
   });
 
   @override
   Widget build(BuildContext context) {
-    final ColorScheme colorScheme = context.theme.colorScheme;
     final TextTheme textTheme = context.textTheme;
     return InkWell(
       onTap: onTap,
@@ -61,9 +62,9 @@ class HabitSmallCard extends GetView {
                         width: 32,
                       ),
                       const SizedBox(height: 16),
-                      const Text(
-                        'Walk',
-                        style: TextStyle(
+                      Text(
+                        title,
+                        style: const TextStyle(
                           color: Color(0xFF040415),
                           fontSize: 14,
                           fontFamily: 'Airbnb Cereal',

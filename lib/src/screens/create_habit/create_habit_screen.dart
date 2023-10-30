@@ -56,6 +56,7 @@ class CreateHabitScreen extends GetView<CreateHabitController> {
                         height: 151,
                         habitCards: [
                           HabitSmallCard(
+                            title: 'Walk',
                             onTap: () {
                               Get.bottomSheet(
                                 shape: const RoundedRectangleBorder(
@@ -67,16 +68,11 @@ class CreateHabitScreen extends GetView<CreateHabitController> {
                                 isScrollControlled: true,
                                 isDismissible: true,
                                 AppBottomSheet(
-                                  bottomSheetController: controller,
+                                  createHabitController: controller,
+                                  title: 'Walk',
                                 ),
                               );
                             },
-                          ),
-                          HabitSmallCard(
-                            onTap: () {},
-                          ),
-                          HabitSmallCard(
-                            onTap: () {},
                           ),
                         ],
                       ),

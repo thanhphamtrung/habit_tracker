@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../controllers/home/home_controller.dart';
 import '../widgets/card/habit_list_tile.dart';
 
 class HomeScreen extends GetView {
@@ -9,6 +10,8 @@ class HomeScreen extends GetView {
 
   @override
   Widget build(BuildContext context) {
+    final homeController = Get.find<HomeController>();
+    Get.put(homeController);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
       color: context.theme.colorScheme.background,
@@ -20,8 +23,9 @@ class HomeScreen extends GetView {
               children: [
                 Text(
                   'In Progress',
-                  style: context.textTheme.headlineLarge
-                      ?.copyWith(color: context.theme.colorScheme.onBackground),
+                  style: context.textTheme.headlineLarge?.copyWith(
+                    color: context.theme.colorScheme.onBackground,
+                  ),
                 ),
                 Container(
                   color: Colors.black26,
@@ -31,14 +35,20 @@ class HomeScreen extends GetView {
               ],
             ),
             const SizedBox(height: 64),
-            const Column(
-              children: [
-                HabitListTile(
-                  title: 'Workout',
+            Obx(
+              () => Expanded(
+                child: ListView.builder(
+                  itemBuilder: ((context, index) => Column(
+                        children: [
+                          HabitListTile(
+                              title: homeController.listCard.value[index]),
+                          const SizedBox(height: 24),
+                        ],
+                      )),
+                  itemCount: homeController.listCard.value.length,
                 ),
-                SizedBox(height: 24),
-              ],
-            )
+              ),
+            ),
           ],
         ),
       ),

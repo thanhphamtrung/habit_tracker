@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:get/get.dart';
 
+import 'package:habit_tracker/src/controllers/home/home_controller.dart';
 import 'package:habit_tracker/src/controllers/navigation_controller.dart';
 
 import '../../controllers/create_habit/create_habit_controller.dart';
@@ -12,15 +13,20 @@ import '../card/habit_list_tile.dart';
 class AppBottomSheet extends GetView {
   const AppBottomSheet({
     super.key,
-    required this.bottomSheetController,
+    required this.createHabitController,
+    required this.title,
   });
 
-  final CreateHabitController bottomSheetController;
+  final CreateHabitController createHabitController;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     final navigationController = Get.find<NavigationController>();
     Get.put(navigationController);
+    final homeController = Get.find<HomeController>();
+    Get.put(homeController);
+
     var colorScheme = context.theme.colorScheme;
     var textTheme = context.textTheme;
     return BottomSheet(
@@ -98,10 +104,10 @@ class AppBottomSheet extends GetView {
                                             ),
                                           ))
                                   .toList(),
-                              value: bottomSheetController
+                              value: createHabitController
                                   .selectedDropdownValue.value,
                               onChanged:
-                                  bottomSheetController.onSelectDropDownValue,
+                                  createHabitController.onSelectDropDownValue,
                               buttonStyleData: ButtonStyleData(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 16),
@@ -126,8 +132,15 @@ class AppBottomSheet extends GetView {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: ElevatedButton(
                   onPressed: () {
+                    homeController.addNewCardData('Walk');
                     Get.back();
-                    Get.snackbar('Hallo', 'You have added a new Habit');
+                    Get.snackbar(
+                      'Hallo',
+                      'You have added a new Habit',
+                      snackPosition: SnackPosition.BOTTOM,
+                      margin: const EdgeInsets.all(80),
+                      duration: const Duration(seconds: 1),
+                    );
                     navigationController.changeTabIndex(0);
                   },
                   style: ElevatedButton.styleFrom(
